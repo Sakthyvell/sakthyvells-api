@@ -1,0 +1,1 @@
+web: gunicorn sakthyvells.wsgi --log-file -

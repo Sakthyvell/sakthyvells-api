@@ -1,31 +1,21 @@
-from rest_framework import generics, status, viewsets
-from rest_framework.exceptions import ValidationError
-from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
 
-from django.shortcuts import render
-
-from .api.permissions import IsAuthorOrReadOnly
 from .api.serializers import AnswerSerializer, QuestionSerializer
 from .models import Answer, Question
 
-class AnswerListAPIView(generics.ListAPIView):
-    """Provide the answers queryset of a specific question instance."""
+
+class AnswerListView(generics.ListAPIView):
     serializer_class = AnswerSerializer
-    permission_classes = [IsAuthenticated]
+    queryset  = Answer.objects.all()
 
-    def get_queryset(self):
-        kwarg_slug = self.kwargs.get("slug")
-        return Answer.objects.filter(question__slug=kwarg_slug).order_by("-created_at")
+class AnswerDetailView(generics.RetrieveAPIView):
+    serializer_class = AnswerSerializer
+    queryset  = Answer.objects.all()
 
-
-class QuestionViewSet(viewsets.ModelViewSet):
-    """Provide CRUD +L functionality for Question."""
-    queryset = Question.objects.all().order_by("-created_at")
-    lookup_field = "slug"
+class QuestionListView(generics.ListAPIView):
     serializer_class = QuestionSerializer
-    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
+    queryset  = Question.objects.all()
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-
+class QuestionDetailView(generics.RetrieveAPIView):
+    serializer_class = QuestionSerializer
+    queryset  = Question.objects.all()
