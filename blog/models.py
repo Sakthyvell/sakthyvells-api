@@ -1,8 +1,7 @@
+from tokenize import blank_re
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import AutoSlugField
-
-from taggit.managers import TaggableManager
 
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -21,12 +20,11 @@ class Article(models.Model):
         null=True
     )
     body = RichTextUploadingField()
-    cover_photo = models.ImageField(upload_to='blog/%Y/%m/%d', null=False)
+    cover_photo = models.ImageField(upload_to='blog/%Y/%m/%d', null=False, blank=False)
     visibility = models.BooleanField(default=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateField(auto_now=True)
+    updated_on = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(max_length=255, unique=True, populate_from=('title',))
-    tags = TaggableManager()
 
     class Meta:
         verbose_name = 'Article'
