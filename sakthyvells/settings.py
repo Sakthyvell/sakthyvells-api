@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'ckeditor',
     'ckeditor_uploader',
-    'taggit',
     'django_extensions',
     'storages',
     'whitenoise.runserver_nostatic', 

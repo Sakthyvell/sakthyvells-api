@@ -1,4 +1,3 @@
-from tokenize import blank_re
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.fields import AutoSlugField
