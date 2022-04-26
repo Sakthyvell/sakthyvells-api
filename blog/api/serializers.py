@@ -11,7 +11,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        exclude = ['created_on', 'updated_on', 'visibility', 'body']
+        exclude = ['created_on', 'updated_on', 'visibility']
 
 
     def get_author_name(self, blog_post):
