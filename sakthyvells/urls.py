@@ -21,4 +21,5 @@ urlpatterns = [
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('qna/', include('qna.urls')),
     path('blog/', include('blog.urls')),
+    path('category/', include('category.urls')),
 ]

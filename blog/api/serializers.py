@@ -3,6 +3,9 @@ from blog.models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):
+    """ArticleSerializer
+        Serializer for Article Model
+    """
 
     author = serializers.SerializerMethodField('get_author_name')
     category = serializers.SerializerMethodField('get_category')

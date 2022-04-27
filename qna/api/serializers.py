@@ -1,12 +1,14 @@
-from email.policy import default
 from rest_framework import serializers
-from qna.models import Answer, Question
+from qna.models import Question
 
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 
 
 class QuestionSerializer(serializers.ModelSerializer):
+    """QuestionSerializer
+        Serializer for Question Model
+    """
     answers = serializers.SerializerMethodField('get_answers')
     class Meta:
         model = Question
