@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Local
     'blog',
     'qna',
+    'category',
 
     #3rd Party
     'rest_framework',

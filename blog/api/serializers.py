@@ -1,6 +1,5 @@
-from unicodedata import category
 from rest_framework import serializers
-from blog.models import Article, Category
+from blog.models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):
@@ -24,8 +23,3 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     def get_date(self, blog_post):
         return blog_post.updated_on.strftime("%d-%m-%Y")
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = '__all__'

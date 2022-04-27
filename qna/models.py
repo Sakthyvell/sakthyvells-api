@@ -1,23 +1,18 @@
-from unicodedata import category
 from django.db import models
-from django.conf import settings
 from django_extensions.db.fields import AutoSlugField
-
-from blog.models import Category
 
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
 class Question(models.Model):
+    title = models.CharField(blank=False, null=False, max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = RichTextUploadingField()
-    slug = AutoSlugField(max_length=255, unique=True, populate_from=('content',))
-    author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                               on_delete=models.CASCADE,
-                               related_name="questions")
-
+    slug = AutoSlugField(max_length=255, unique=True,
+                         populate_from=('content',))
     def __str__(self):
-        return self.content
+        return self.title
 
 
 class Answer(models.Model):

@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .api.serializers import ArticleSerializer, CategorySerializer
-from .models import Article, Category
+from .api.serializers import ArticleSerializer
+from .models import Article
 
 
 class ArticleListView(generics.ListAPIView):
@@ -12,11 +12,3 @@ class ArticleDetailView(generics.RetrieveAPIView):
     serializer_class = ArticleSerializer
     queryset  = Article.objects.all()
     lookup_field = 'slug'
-
-class CategoryListView(generics.ListAPIView):
-    serializer_class = CategorySerializer
-    queryset  = Category.objects.all()
-
-class CategoryDetailView(generics.RetrieveAPIView):
-    serializer_class = CategorySerializer
-    queryset  = Category.objects.all()
