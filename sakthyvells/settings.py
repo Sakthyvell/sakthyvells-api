@@ -169,8 +169,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # )
 CORS_ORIGIN_ALLOW_ALL = True   
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# # SECURITY WARNING: turn on in production!
+# SECURE_SSL_REDIRECT=True
+# SESSION_COOKIE_SECURE=True
+# CSRF_COOKIE_SECURE=True
 
 # CKEditor Configs
 CKEDITOR_UPLOAD_PATH = 'uploads/'
